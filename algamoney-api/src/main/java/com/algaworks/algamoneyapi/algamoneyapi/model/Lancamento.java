@@ -2,7 +2,7 @@ package com.algaworks.algamoneyapi.algamoneyapi.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -16,10 +16,10 @@ public class Lancamento {
     private String descricao;
 
     @Column(name = "data_vencimento")
-    private LocalDate dataVencimento;
+    private Date dataVencimento;
 
     @Column(name = "data_pagamento")
-    private LocalDate dataPagamento;
+    private Date dataPagamento;
 
     private BigDecimal valor;
 
@@ -52,19 +52,19 @@ public class Lancamento {
         this.descricao = descricao;
     }
 
-    public LocalDate getDataVencimento() {
+    public Date getDataVencimento() {
         return dataVencimento;
     }
 
-    public void setDataVencimento(LocalDate dataVencimento) {
+    public void setDataVencimento(Date dataVencimento) {
         this.dataVencimento = dataVencimento;
     }
 
-    public LocalDate getDataPagamento() {
+    public Date getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(LocalDate dataPagamento) {
+    public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 
