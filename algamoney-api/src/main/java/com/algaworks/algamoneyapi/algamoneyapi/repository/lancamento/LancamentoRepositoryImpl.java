@@ -1,6 +1,7 @@
 package com.algaworks.algamoneyapi.algamoneyapi.repository.lancamento;
 
 import com.algaworks.algamoneyapi.algamoneyapi.model.Lancamento;
+import com.algaworks.algamoneyapi.algamoneyapi.model.Lancamento_;
 import com.algaworks.algamoneyapi.algamoneyapi.repository.filter.LancamentoFilter;
 import org.springframework.util.StringUtils;
 
@@ -39,16 +40,20 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 
         if (!StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
             predicates.add(builder.like(
-                    builder.lower(root.get("descricao")), "%" + lancamentoFilter.getDescricao().toLowerCase() + "%"
+                    builder.lower(root.get(Lancamento_.descricao)), "%" + lancamentoFilter.getDescricao().toLowerCase() + "%"
             ));
         }
 
         if (lancamentoFilter.getDataVencimentoDe() != null) {
-
+            predicates.add(
+                    builder.greaterThanOrEqualTo(root.get(Lancamento_.dataVencimento), lancamentoFilter.getDataVencimentoDe())
+            );
         }
 
         if (lancamentoFilter.getDataVencimentoAte() != null) {
-
+            predicates.add(
+                    builder.lessThanOrEqualTo(root.get(Lancamento_.dataVencimento), lancamentoFilter.getDataVencimentoAte())
+            );
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
