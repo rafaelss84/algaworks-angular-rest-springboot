@@ -1,4 +1,4 @@
-package com.example.algamoney.api.config;
+package com.algaworks.algamoneyapi.algamoneyapi.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
